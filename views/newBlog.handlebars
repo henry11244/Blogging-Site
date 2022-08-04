@@ -1,13 +1,41 @@
 <!-- Loop over each object in the projects array -->
-<form>
-    <input class="form-control form-control-lg title" type="text" placeholder="Title">
+<form class="submit-blog">
+    <input class="form-control form-control-lg" id="blog-title" type="text" placeholder="Title">
 
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Blog Content:</label>
-        <textarea class="form-control description" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="form-control blog-content" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
     <div class="form-group">
-        <button class="btn btn-primary submit" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
     </div>
-
 </form>
+<div id="select" class="{{user_id}}"></div>
+<script>
+    const newBlogHandler = async (event) => {
+        event.preventDefault();
+
+        const title = document.querySelector('#blog-title').value.trim();
+        const description = document.querySelector('.blog-content').value.trim();
+        const user_id = document.querySelector('#select').className.value;
+
+        if (title && description) {
+            console.log(title)
+            console.log(description)
+            console.log(user_id)
+            console.log(JSON.stringify({ title, description, user_id }))
+            const response = await fetch('/api/blogs', {
+                method: 'POST',
+                body: JSON.stringify({ title, description, user_id }),
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            if (response.ok) {
+                document.location.replace('/');
+            } else {
+                alert(response.statusText);
+            }
+        }
+    };
+
+    document.querySelector('.submit-blog').addEventListener('submit', newBlogHandler);</script>
