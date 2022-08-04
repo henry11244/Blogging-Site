@@ -1,0 +1,17 @@
+[
+    {
+        "blog_id": 1,
+        "comment": "comment......",
+        "user_id": 3
+    },
+    {
+        "blog_id": 1,
+        "comment": "comment......",
+        "user_id": 2
+    },
+    {
+        "blog_id": 2,
+        "comment": "comment......",
+        "user_id": 3
+    }
+]

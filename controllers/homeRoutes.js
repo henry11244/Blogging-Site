@@ -91,4 +91,11 @@ router.get('/dashboard', async (req, res) => {
     }
 });
 
+router.get('/newBlog', (req, res) => {
+
+    res.render('newBlog')
+
+
+});
+
 module.exports = router;
