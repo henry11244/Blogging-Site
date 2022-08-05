@@ -49,7 +49,7 @@ The applicaiton relies on SQL to maintain user and blogging data as well as Java
 
 Navigate to the following link to access the live application: [Blogging Application](https://blogging-site-henry.herokuapp.com/)
 
-<img src = 'img/bloggingImg1.png'>
+<img src = 'img/BloggingImg1.png'>
 
 ## Usage
 
