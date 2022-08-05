@@ -1,9 +1,10 @@
 <!-- Loop over each object in the projects array -->
 {{#each blogs as |blog|}}
-<div class="alert alert-success" role="alert">
+<div class="alert alert-success eventContainer" role="alert">
     <h4 class="alert-heading">{{blog.title}}</h4>
     <p>{{blog.description}}</p>
     <hr>
-
+    <button type="button" class="btn btn-info edit" data-id="{{blog.id}}">Edit</button>
+    <button type="button" class="btn btn-danger delete" data-id="{{blog.id}}">Delete</button>
 </div>
 {{/each}}

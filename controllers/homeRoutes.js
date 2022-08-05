@@ -53,9 +53,30 @@ router.get('/Blog/:id', async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
-
         // Find the logged in user based on the session ID
         const userData = await User.findByPk(1, {
+            include: [
+                {
+                    model: Blog,
+
+                },]
+        });
+        const user = userData.get({ plain: true });
+        res.render('dashboard', {
+            ...user,
+            logged_in: true
+
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// Use withAuth middleware to prevent access to route
+router.get('/editBlog', withAuth, async (req, res) => {
+    try {
+        // Find the logged in user based on the session ID
+        const blogData = await Blog.findByPk(1, {
             include: [
                 {
                     model: Blog,
