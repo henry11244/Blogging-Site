@@ -1,17 +1,17 @@
 [
     {
         "blog_id": 1,
-        "comment": "comment......",
+        "comment": "Wow! Awesme Blog!",
         "user_id": 3
     },
     {
         "blog_id": 1,
-        "comment": "comment......",
+        "comment": "Amazing Blog",
         "user_id": 2
     },
     {
         "blog_id": 2,
-        "comment": "comment......",
+        "comment": "This is a bit confusing",
         "user_id": 3
     }
 ]

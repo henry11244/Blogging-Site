@@ -27,7 +27,6 @@ const editButtonHandler = async (event) => {
             body: JSON.stringify({ title: title, description }),
             headers: { "Content-Type": "application/json" },
         });
-
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
@@ -41,3 +40,26 @@ deletebutton.forEach(button => { button.addEventListener('click', delButtonHandl
 
 const editbutton = document.querySelectorAll('.edit')
 editbutton.forEach(button => { button.addEventListener('click', editButtonHandler) });
+
+const newCommentHandler = async (event) => {
+    event.preventDefault();
+
+    const comment = document.querySelector('#Comment').value.trim();
+
+    if (comment) {
+        console.log(JSON.stringify({ comment }))
+        const response = await fetch('/api/comment', {
+            method: 'POST',
+            body: JSON.stringify({ comment }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
+            alert(response.statusText);
+        }
+    }
+};
+
+document.querySelector('.newComment').addEventListener('submit', newCommentHandler);
