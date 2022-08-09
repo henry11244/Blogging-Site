@@ -24,7 +24,7 @@ const editButtonHandler = async (event) => {
         console.log(JSON.stringify({ title, description }))
         const response = await fetch(`/api/blogs/${blogId}`, {
             method: 'PUT',
-            body: JSON.stringify({ title: title, description }),
+            body: JSON.stringify({ title, description }),
             headers: { "Content-Type": "application/json" },
         });
         if (response.ok) {

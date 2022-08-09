@@ -42,7 +42,6 @@ router.put('/:id', async (req, res) => {
                 id: req.params.id,
             },
         })
-        categoryData()
         res.status(200).json(blogData);
     } catch (err) {
         res.status(400).json(err);
