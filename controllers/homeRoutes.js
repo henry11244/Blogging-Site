@@ -113,30 +113,14 @@ router.get('/login', (req, res) => {
         res.redirect('/');
         return;
     }
-
     res.render('login');
 });
 
-// router.get('/dashboard', async (req, res) => {
-//     try {
-//         // Get all projects and JOIN with user data
-//         const blogData = await Blog.findAll({ where: { user_id: req.session.user_id } });
-
-//         // Serialize data so the template can read it
-//         const blogs = blogData.map((blog) => blog.get({ plain: true }));
-//         console.log(blogs)
-//         // Pass serialized data and session flag into template
-//         res.render('homepage', {
-//             blogs,
-//             logged_in: req.session.logged_in
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
 
 router.get('/newBlog', withAuth, (req, res) => {
-    res.render('newBlog')
+    res.render('newBlog',
+        { logged_in: true }
+    )
 });
 
 module.exports = router;

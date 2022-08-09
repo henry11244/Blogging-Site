@@ -1,4 +1,4 @@
-
+// function for adding new blogs
 const newBlogHandler = async (event) => {
     event.preventDefault();
 

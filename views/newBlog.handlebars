@@ -1,4 +1,5 @@
-<!-- Loop over each object in the projects array -->
+
+{{!-- form for adding new blogs --}}
 <form class="submit-blog">
     <input class="form-control form-control-lg" id="blog-title" type="text" placeholder="Title">
 
@@ -11,20 +12,16 @@
     </div>
 </form>
 <div id="select" class="{{user_id}}"></div>
+
+{{!-- script for adding new blogs --}}
 <script>
     const newBlogHandler = async (event) => {
         event.preventDefault();
-
         const title = document.querySelector('#blog-title').value.trim();
         const description = document.querySelector('.blog-content').value.trim();
         const user_id = document.querySelector('#select').className.value;
-
         if (title && description) {
-            console.log(title)
-            console.log(description)
-            console.log(user_id)
-            console.log(JSON.stringify({ title, description, user_id }))
-            const response = await fetch('/api/blogs', {
+                        const response = await fetch('/api/blogs', {
                 method: 'POST',
                 body: JSON.stringify({ title, description, user_id }),
                 headers: { 'Content-Type': 'application/json' },
@@ -37,5 +34,4 @@
             }
         }
     };
-
     document.querySelector('.submit-blog').addEventListener('submit', newBlogHandler);</script>

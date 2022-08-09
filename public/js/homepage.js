@@ -1,5 +1,4 @@
-
-
+// delete blog function
 const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const blogId = event.target.getAttribute('data-id');
@@ -16,6 +15,7 @@ const delButtonHandler = async (event) => {
     }
 };
 
+// edit blog function
 const editButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
         const blogId = event.target.getAttribute('data-id');
@@ -35,19 +35,20 @@ const editButtonHandler = async (event) => {
     }
 };
 
+// event handlers for delete function
 const deletebutton = document.querySelectorAll('.delete')
 deletebutton.forEach(button => { button.addEventListener('click', delButtonHandler) });
 
+// eventhandler for edit function
 const editbutton = document.querySelectorAll('.edit')
 editbutton.forEach(button => { button.addEventListener('click', editButtonHandler) });
 
+// function for new comments
 const newCommentHandler = async (event) => {
     event.preventDefault();
-    const comment = document.querySelector('#Comment').value.trim();
+    const blog_id = await event.target.getAttribute('data-id');
+    const comment = await document.querySelector(`#Comment${blog_id}`).value.trim();
     const user_id = sessionStorage.getItem('user_id');
-    const blog_id = event.target.getAttribute('data-id');
-    console.log(user_id)
-    console.log(blog_id)
     if (comment) {
         console.log(JSON.stringify({ comment }))
         const response = await fetch('/comment', {
@@ -55,7 +56,6 @@ const newCommentHandler = async (event) => {
             body: JSON.stringify({ comment, user_id, blog_id }),
             headers: { 'Content-Type': 'application/json' },
         });
-
         if (response.ok) {
             document.location.replace('/');
         } else {
@@ -64,6 +64,6 @@ const newCommentHandler = async (event) => {
     }
 };
 
-
+// eventlistener to add comment button
 const commentbutton = document.querySelectorAll('.newComment')
 commentbutton.forEach(button => { button.addEventListener('submit', newCommentHandler) });

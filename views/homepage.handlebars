@@ -1,4 +1,6 @@
 <!-- Loop over each object in the projects array -->
+
+{{!-- adding each blog --}}
 {{#each blogs as |blog|}}
 <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">{{blog.title}}</h4>
@@ -7,24 +9,26 @@
     <p class="mb-0">Written by: {{user.username}}</p>
     <br>
     <p><b>Comments:</b></p>
+
+    {{!-- adding existing comments --}}
     {{#each comments as |comment|}}
     <div class="alert alert-info" role="alert">
         <p class="mb-0">{{comment.comment}}</p>
     </div>
     {{/each}}
-    {{!-- {{#if logged_in}} --}}
+
+    {{!-- new comment section --}}
     <form class="form newComment" data-id="{{blog.id}}">
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">New Comment</span>
             </div>
-            <textarea class="form-control" id='Comment' aria-label="With textarea"></textarea>
+            <textarea class="form-control" id=Comment{{blog.id}} aria-label="With textarea"></textarea>
         </div>
         <div class="form-group text-right">
-            <button class="btn btn-primary" type="submit" data-id="{{blog.id}}">Add Comment</button>
+            <button class="btn btn-primary " type="submit" data-id="{{blog.id}}">Add Comment</button>
         </div>
     </form>
-    {{!-- {{/if}} --}}
 </div>
 <br>
 
