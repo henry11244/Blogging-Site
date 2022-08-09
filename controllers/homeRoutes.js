@@ -21,7 +21,8 @@ router.get('/', async (req, res) => {
         // Pass serialized data and session flag into template
         res.render('homepage', {
             blogs,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
+            user_id: req.session.user_id
         })
 
     } catch (err) {
@@ -29,20 +30,18 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/comment', async (req, res) => {
-    try {
-        const commentData = await Comment.create(req.body);
-        req.session.save(() => {
-            req.session.user_id = commentData.id;
-            req.session.logged_in = true;
 
-            res.status(200).json(userData);
+router.post("/comment", async (req, res) => {
+    try {
+        const commentData = await Comment.create({
+            ...req.body,
         });
+        res.status(200).json(commentData);
+
     } catch (err) {
         res.status(400).json(err);
     }
 });
-
 
 router.get('/Blog/:id', async (req, res) => {
     try {

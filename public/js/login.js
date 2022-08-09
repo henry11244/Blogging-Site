@@ -1,6 +1,6 @@
 const loginFormHandler = async (event) => {
-    // event.preventDefault();
-    console.log('test')
+    event.preventDefault();
+
     // Collect values from the login form
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
@@ -12,6 +12,11 @@ const loginFormHandler = async (event) => {
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
+
+        const data = await response.json();
+
+        sessionStorage.setItem("user_id", data?.user?.id);
+        sessionStorage.setItem("logged_in", true);
 
         if (response.ok) {
             // If successful, redirect the browser to the profile page

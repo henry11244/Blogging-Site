@@ -43,14 +43,16 @@ editbutton.forEach(button => { button.addEventListener('click', editButtonHandle
 
 const newCommentHandler = async (event) => {
     event.preventDefault();
-
     const comment = document.querySelector('#Comment').value.trim();
-
+    const user_id = sessionStorage.getItem('user_id');
+    const blog_id = event.target.getAttribute('data-id');
+    console.log(user_id)
+    console.log(blog_id)
     if (comment) {
         console.log(JSON.stringify({ comment }))
-        const response = await fetch('/api/comment', {
+        const response = await fetch('/comment', {
             method: 'POST',
-            body: JSON.stringify({ comment }),
+            body: JSON.stringify({ comment, user_id, blog_id }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -62,4 +64,6 @@ const newCommentHandler = async (event) => {
     }
 };
 
-document.querySelector('.newComment').addEventListener('submit', newCommentHandler);
+
+const commentbutton = document.querySelectorAll('.newComment')
+commentbutton.forEach(button => { button.addEventListener('submit', newCommentHandler) });
