@@ -22,7 +22,7 @@ const loginFormHandler = async (event) => {
             // If successful, redirect the browser to the profile page
             document.location.replace('/');
         } else {
-            alert(response.statusText);
+            alert('incorrect password or username');
         }
     }
 };
