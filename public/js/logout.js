@@ -1,7 +1,8 @@
 // function for fetching logout
 const logout = async () => {
 
-    sessionStorage.setItem("user_id", null);
+    sessionStorage.setItem("user_id", 0);
+    sessionStorage.setItem("username", "Guest");
     sessionStorage.setItem("logged_in", false);
 
     const response = await fetch('/api/users/logout', {

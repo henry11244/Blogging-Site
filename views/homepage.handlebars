@@ -21,6 +21,7 @@
     </div>
 
     {{!-- new comment section --}}
+    {{!-- {{#if logged_in}} --}}
     <form class="form newComment" data-id="{{blog.id}}">
         <div class="input-group">
             <div class="input-group-prepend">
@@ -32,7 +33,7 @@
             <button class="btn" type="submit" data-id="{{blog.id}}">Add Comment</button>
         </div>
     </form>
-
+    {{!-- {{/if}} --}}
 </div>
 <br>
 

@@ -46,14 +46,17 @@ editbutton.forEach(button => { button.addEventListener('click', editButtonHandle
 // function for new comments
 const newCommentHandler = async (event) => {
     event.preventDefault();
+
     const blog_id = await event.target.getAttribute('data-id');
     const comment = await document.querySelector(`#Comment${blog_id}`).value.trim();
     const user_id = sessionStorage.getItem('user_id');
+    const commenter = sessionStorage.getItem('username')
+
     if (comment) {
         console.log(JSON.stringify({ comment }))
         const response = await fetch('/comment', {
             method: 'POST',
-            body: JSON.stringify({ comment, user_id, blog_id }),
+            body: JSON.stringify({ comment, user_id, blog_id, commenter }),
             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {

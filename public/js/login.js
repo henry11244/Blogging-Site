@@ -16,6 +16,7 @@ const loginFormHandler = async (event) => {
         const data = await response.json();
 
         sessionStorage.setItem("user_id", data?.user?.id);
+        sessionStorage.setItem("username", data?.user?.username);
         sessionStorage.setItem("logged_in", true);
 
         if (response.ok) {

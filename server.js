@@ -22,6 +22,7 @@ const sess = {
     secret: 'secret',
     cookie: { maxAge: 3600000000 },
     resave: true,
+    rolling: true,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize

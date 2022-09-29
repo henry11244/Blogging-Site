@@ -24,7 +24,8 @@ router.get('/', async (req, res) => {
         res.render('homepage', {
             blogs,
             logged_in: req.session.logged_in,
-            user_id: req.session.user_id
+            user_id: req.session.user_id,
+            username: req.session.username
         })
 
     } catch (err) {
@@ -37,6 +38,8 @@ router.post("/comment", async (req, res) => {
     try {
         const commentData = await Comment.create({
             ...req.body,
+            // user_id: req.session.user_id,
+            // commenter: req.session.username
         });
         res.status(200).json(commentData);
 
