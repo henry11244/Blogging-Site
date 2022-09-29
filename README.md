@@ -32,7 +32,7 @@
 
 The motivation behind this project is to create an intuitive site for creating, reading and commenting on blog posts. 
 
-The applicaiton relies on SQL to maintain user and blogging data as well as Javascript and Node.js for processing on the backend. Once the data has been processed, a webpage is rendered and displayed through Handlebar.js.
+The applicaiton relies on SQL to maintain user, blog and comment data as well as Javascript and Node.js for processing on the backend. Once the data has been processed, a webpage is rendered and displayed through Handlebar.js.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
