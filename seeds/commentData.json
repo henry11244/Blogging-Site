@@ -2,16 +2,19 @@
     {
         "blog_id": 1,
         "comment": "Wow! Awesme Blog!",
-        "user_id": 3
+        "user_id": 3,
+        "commenter": "Amiko"
     },
     {
         "blog_id": 1,
         "comment": "Amazing Blog",
-        "user_id": 2
+        "user_id": 2,
+        "commenter": "Lernantino"
     },
     {
         "blog_id": 2,
         "comment": "This is a bit confusing",
-        "user_id": 3
+        "user_id": 3,
+        "commenter": "Amiko"
     }
 ]

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Blog, User, Comment } = require('../models');
+const sequelize = require('../config/connection');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -14,7 +15,8 @@ router.get('/', async (req, res) => {
                 {
                     model: Comment,
                 },
-            ]
+            ],
+
         });
         // Serialize data so the template can read it
         const blogs = blogData.map((blog) => blog.get({ plain: true }));

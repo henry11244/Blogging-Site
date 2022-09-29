@@ -2,20 +2,23 @@
 
 {{!-- adding each blog --}}
 {{#each blogs as |blog|}}
-<div class="alert alert-success" role="alert">
+<div class="blogContainer">
     <h4 class="alert-heading">{{blog.title}}</h4>
     <p>{{blog.description}}</p>
     <hr>
     <p class="mb-0">Written by: {{user.username}}</p>
     <br>
-    <p><b>Comments:</b></p>
+    <div class="comment">
+        <p><b>Comments:</b></p>
 
-    {{!-- adding existing comments --}}
-    {{#each comments as |comment|}}
-    <div class="alert alert-info" role="alert">
-        <p class="mb-0">{{comment.comment}}</p>
+        {{!-- adding existing comments --}}
+        {{#each comments as |comment|}}
+        <div class="alert comment">
+
+            <p class="mb-0">{{comment.commenter}}<span class="commenter">: {{comment.comment}}</span> </p>
+        </div>
+        {{/each}}
     </div>
-    {{/each}}
 
     {{!-- new comment section --}}
     <form class="form newComment" data-id="{{blog.id}}">
@@ -26,9 +29,10 @@
             <textarea class="form-control" id=Comment{{blog.id}} aria-label="With textarea"></textarea>
         </div>
         <div class="form-group text-right">
-            <button class="btn btn-primary " type="submit" data-id="{{blog.id}}">Add Comment</button>
+            <button class="btn" type="submit" data-id="{{blog.id}}">Add Comment</button>
         </div>
     </form>
+
 </div>
 <br>
 
