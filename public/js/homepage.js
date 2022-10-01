@@ -43,12 +43,15 @@ deletebutton.forEach(button => { button.addEventListener('click', delButtonHandl
 const editbutton = document.querySelectorAll('.edit')
 editbutton.forEach(button => { button.addEventListener('click', editButtonHandler) });
 
+
+
 // function for new comments
 const newCommentHandler = async (event) => {
     event.preventDefault();
 
     const blog_id = await event.target.getAttribute('data-id');
     const comment = await document.querySelector(`#Comment${blog_id}`).value.trim();
+    const commentLoginMessage = document.querySelector(`#commentLoginMessage${blog_id}`)
     const user_id = sessionStorage.getItem('user_id');
     const commenter = sessionStorage.getItem('username')
 
@@ -62,7 +65,8 @@ const newCommentHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/');
         } else {
-            alert(response.statusText);
+            // alert("🔓 Please Login to Add Comments");
+            commentLoginMessage.setAttribute('style', 'display: block;')
         }
     }
 };

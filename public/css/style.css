@@ -39,3 +39,10 @@ nav {
 .btn {
     background-color: #F4ACB7;
 }
+
+.commentLoginMessage {
+    color: red;
+    margin-top: -.1rem;
+    font-weight: bold;
+    /* display: none */
+}
